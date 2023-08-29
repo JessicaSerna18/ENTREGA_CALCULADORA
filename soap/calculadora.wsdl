@@ -1,0 +1,178 @@
+<definitions
+  name="WSDLCalcula" 
+  targetNamespace="http://localhost/soap"
+  xmlns:tns="http://localhost/soap" 
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+  xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" 
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+  xmlns="http://schemas.xmlsoap.org/wsdl/"
+>
+<message name="sumarRequest">
+  <part name="a" type="xsd:float"/>
+  <part name="b" type="xsd:float"/>
+</message>
+<message name="sumarResponse">
+  <part name="resultado" type="xsd:float"/>
+</message>
+
+
+<message name="restarRequest">
+  <part name="a" type="xsd:float"/>
+  <part name="b" type="xsd:float"/>
+</message>
+<message name="restarResponse">
+  <part name="resultado" type="xsd:float"/>
+</message>
+
+<message name="multiplicarRequest">
+  <part name="a" type="xsd:float"/>
+  <part name="b" type="xsd:float"/>
+</message>
+<message name="multiplicarResponse">
+  <part name="resultado" type="xsd:float"/>
+</message>
+
+<message name="dividirRequest">
+  <part name="a" type="xsd:float"/>
+  <part name="b" type="xsd:float"/>
+</message>
+<message name="dividirResponse">
+  <part name="resultado" type="xsd:float"/>
+</message>
+
+<message name="potenciaRequest">
+  <part name="a" type="xsd:float"/>
+  <part name="b" type="xsd:float"/>
+</message>
+<message name="potenciaResponse">
+  <part name="resultado" type="xsd:float"/>
+</message>
+
+<portType name="CalculaPortType">
+  <operation name="sumar">
+    <input message="tns:sumarRequest"/>
+    <output message="tns:sumarResponse"/>
+  </operation>
+   <operation name="restar">
+    <input message="tns:restarRequest"/>
+    <output message="tns:restarResponse"/>
+  </operation>
+  <operation name="multiplicar">
+    <input message="tns:multiplicarRequest"/>
+    <output message="tns:multiplicarResponse"/>
+  </operation>
+  <operation name="dividir">
+    <input message="tns:dividirRequest"/>
+    <output message="tns:dividirResponse"/>
+  </operation>
+  <operation name="potencia">
+    <input message="tns:potenciaRequest"/>
+    <output message="tns:potenciaResponse"/>
+  </operation>
+</portType>
+
+<binding name="CalculaBinding" type="tns:CalculaPortType">
+  <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="sumar">
+    <soap:operation 
+      soapAction="http://localhost/soap/serversoap.php?method=sumar"
+    />
+    <input>
+     <soap:body 
+         namespace="http://localhost/soap" 
+         use="encoded"     
+         encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+    </input>
+    <output>
+     <soap:body 
+         namespace="http://localhost/soap" 
+         use="encoded" 
+         encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+    </output>
+  </operation>
+  <operation name="restar">
+    <soap:operation 
+      soapAction="http://localhost/soap/serversoap.php?method=restar"
+    />
+    <input>
+     <soap:body 
+         namespace="http://localhost/soap" 
+         use="encoded"     
+         encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+    </input>
+    <output>
+     <soap:body 
+         namespace="http://localhost/soap" 
+         use="encoded" 
+         encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+    </output>
+  </operation>
+  <operation name="multiplicar">
+    <soap:operation 
+      soapAction="http://localhost/soap/server.php?method=multiplicar"
+    />
+    <input>
+     <soap:body 
+         namespace="http://localhost/soap" 
+         use="encoded"     
+         encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+    </input>
+    <output>
+     <soap:body 
+         namespace="http://localhost/soap" 
+         use="encoded" 
+         encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+    </output>
+  </operation>
+  <operation name="dividir">
+    <soap:operation 
+      soapAction="http://localhost/soap/server.php?method=dividir"
+    />
+    <input>
+     <soap:body 
+         namespace="http://localhost/soap" 
+         use="encoded"     
+         encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+    </input>
+    <output>
+     <soap:body 
+         namespace="http://localhost/soap" 
+         use="encoded" 
+         encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+    </output>
+  </operation>
+  <operation name="potencia">
+    <soap:operation 
+      soapAction="http://localhost/soap/server.php?method=potencia"
+    />
+    <input>
+     <soap:body 
+         namespace="http://localhost/soap" 
+         use="encoded"     
+         encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+    </input>
+    <output>
+     <soap:body 
+         namespace="http://localhost/soap" 
+         use="encoded" 
+         encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+    </output>
+  </operation>
+</binding>
+<service name="Calcula">
+  <port name="CalculaPort" binding="tns:CalculaBinding">
+    <soap:address location="http://localhost/soap/server.php"/>
+  </port>
+</service>
+</definitions>
